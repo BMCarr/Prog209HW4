@@ -1,10 +1,11 @@
-let noteArray = [];
+let movieArray = [];
 let selectedType = "";
 
 // define a constructor to create note objects
-let NoteObject = function (pData, pType) {
-    this.data = pData;
-    this.type = pType;
+let MovieObject = function (title, year, genre) {
+    this.title = title;
+    this.year = year;
+    this.genre = genre;
 }
 
 
@@ -13,9 +14,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     document.getElementById("buttonAdd").addEventListener("click", function () {
 
-        noteArray.push(new NoteObject(document.getElementById("note").value, selectedType));
-        console.log(noteArray);
-        document.getElementById("note").value = "";
+        movieArray.push(new MovieObject(document.getElementById("title").value, selectedType));
+        console.log(movieArray);
+        document.getElementById("title").value = "";
+    });
+
+    //TO DO: below code isn't working, need to clarify what changes between title and year properties
+    document.getElementById("buttonAdd").addEventListener("click", function () {
+
+        movieArray.push(new MovieObject(document.getElementById("year").value, selectedType));
+        console.log(movieArray);
+        document.getElementById("year").value = "";
     });
 
     $(document).bind("change", "#select-type", function (event, ui) {
@@ -40,9 +49,9 @@ function createList() {
     var myul = document.getElementById("myList");
     myul.innerHTML = '';
 
-    noteArray.forEach(function (element,) {   // use handy array forEach method
+    movieArray.forEach(function (element,) {   // use handy array forEach method
         var li = document.createElement('li');
-        li.innerHTML = element.data + ":  " + element.type;
+        li.innerHTML = element.title + ":  " + element.year + " " + element.genre;
         myul.appendChild(li);
     });
 };
