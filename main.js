@@ -14,16 +14,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     document.getElementById("buttonAdd").addEventListener("click", function () {
 
-        movieArray.push(new MovieObject(document.getElementById("title").value, selectedType));
+        movieArray.push(new MovieObject(document.getElementById("title").value, document.getElementById("year").value, selectedType));
         console.log(movieArray);
         document.getElementById("title").value = "";
-    });
-
-    //TO DO: below code isn't working, need to clarify what changes between title and year properties
-    document.getElementById("buttonAdd").addEventListener("click", function () {
-
-        movieArray.push(new MovieObject(document.getElementById("year").value, selectedType));
-        console.log(movieArray);
         document.getElementById("year").value = "";
     });
 
@@ -51,7 +44,7 @@ function createList() {
 
     movieArray.forEach(function (element,) {   // use handy array forEach method
         var li = document.createElement('li');
-        li.innerHTML = element.title + ":  " + element.year + " " + element.genre;
+        li.innerHTML = element.title + ":  " + element.year + ", " + element.genre;
         myul.appendChild(li);
     });
 };
